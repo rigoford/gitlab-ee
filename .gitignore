@@ -1,0 +1,19 @@
+### Intellij ###
+.idea/
+*.iws
+/out/
+.idea_modules/
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.project
+.externalToolBuilders/
