@@ -18,6 +18,9 @@ RUN curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-${GIT
     && DEBIAN_FRONTEND=noninteractive apt-get install gitlab-${GITLAB_FLAVOUR}=${GITLAB_VERSION} \
     && rm -rf /var/lib/apt/lists/*
 
+COPY assets/docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 22 80 443
