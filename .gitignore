@@ -1,5 +1,6 @@
 ### Intellij ###
 .idea/
+*.iml
 *.iws
 /out/
 .idea_modules/
@@ -17,3 +18,8 @@ local.properties
 .loadpath
 .project
 .externalToolBuilders/
+
+### Maven template
+target/
+
+# Created by .ignore support plugin (hsz.mobi)

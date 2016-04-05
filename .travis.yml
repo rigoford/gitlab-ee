@@ -1,0 +1,21 @@
+sudo: required
+
+language: java
+
+services:
+  - docker
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_5781b997fe88_key -iv $encrypted_5781b997fe88_iv -in whitesource-docker-agent.config.enc -out whitesource-docker-agent.config -d
+  - wget https://s3.amazonaws.com/docker-agent/whitesource-docker-agent-1.0.2.jar
+  - DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock"
+  - docker -H tcp://127.0.0.1:2375 version
+  - docker build -t rigoford/gitlab-ee .
+  - docker run --detach --name gitlab-ee rigoford/gitlab-ee
+
+script:
+#  - java -jar whitesource-docker-agent-1.0.2.jar
+
+after_script:
+  - docker stop gitlab-ee
+  - docker rm gitlab-ee
